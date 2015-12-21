@@ -1,0 +1,14 @@
+<h2>Inventory Store 2256</h2>
+
+<ul class="inventory-list">
+  {{#each model as |car|}}
+    <li class="inventory-list-item">
+      <span class="inventory-list-item__description">
+        {{car.year}} {{car.manufacturer}} {{car.modelName}}
+      </span>
+      <span class="inventory-list-item__available">
+        {{car.currentlyAvailable}} Available
+      </span>
+    </li>
+  {{/each}}
+</ul>

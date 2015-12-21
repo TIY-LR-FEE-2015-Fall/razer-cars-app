@@ -1,6 +1,8 @@
 import Mirage from 'ember-cli-mirage';
 
 export default function() {
+  this.get('carTypes', ['car-types']);
+
   this.post('/oauth/token', function(server, req) {
     var data = req.requestBody.split('&').reduce((carry, current) => {
       var [key, value] = current.split('=');
