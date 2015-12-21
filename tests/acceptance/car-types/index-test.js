@@ -4,6 +4,9 @@ import moduleForAcceptance from 'razer-cars-app/tests/helpers/module-for-accepta
 moduleForAcceptance('Acceptance | car types/index', {
   beforeEach() {
     login();
+    server.create('car-type', {history: [1, 2, 3, 4, 5]});
+    server.createList('car-type', 4);
+    server.createList('inventory-history', 5, {car: '1'});
   },
 });
 
@@ -26,8 +29,8 @@ test('User can see a list of car types', function(assert) {
 
     assert.equal(items.length, 5, 'There should be five car types in the list');
 
-    assert.equal(firstItem.find('.car-type-list-item__year').text(), '2015');
-    assert.equal(firstItem.find('.car-type-list-item__name').text(), 'Ford Explorer');
+    assert.includes(firstItem.find('.car-type-list-item__year').text(), '2012');
+    assert.includes(firstItem.find('.car-type-list-item__name').text(), 'Ford Explorer');
   });
 });
 

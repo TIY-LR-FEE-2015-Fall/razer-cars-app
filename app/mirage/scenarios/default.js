@@ -1,7 +1,5 @@
-export default function(/* server */) {
-
-  // Seed your development database using your factories. This
-  // data will not be loaded in your tests.
-
-  // server.createList('contact', 10);
+export default function(server) {
+  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.createList('car-type', 4);
+  server.createList('inventory-history', 5, {car: '1'});
 }
