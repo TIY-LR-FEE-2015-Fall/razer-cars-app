@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { authenticateSession } from 'exercise-00/tests/helpers/ember-simple-auth';
+import { authenticateSession } from './ember-simple-auth';
 
 export default Ember.Test.registerHelper('login', function(app) {
   // jscs: disable
