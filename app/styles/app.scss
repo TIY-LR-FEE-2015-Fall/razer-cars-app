@@ -3,3 +3,11 @@
 .mdl-grid {
   max-width: 1040px;
 }
+
+.inventory-list-item__available--none {
+  color: #950b07;
+}
+
+.inventory-list-item__available--available {
+  color: #079537;
+}

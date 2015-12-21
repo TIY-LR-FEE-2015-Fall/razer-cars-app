@@ -11,7 +11,8 @@
             <span class="inventory-list-item__description">
               {{car.year}} {{car.manufacturer}} {{car.modelName}}
             </span> -
-            <span class="inventory-list-item__available">
+            <span class="inventory-list-item__available
+              {{if car.currentlyAvailable "inventory-list-item__available--available" "inventory-list-item__available--none"}}">
               {{car.currentlyAvailable}} Available
             </span>
           </td>
