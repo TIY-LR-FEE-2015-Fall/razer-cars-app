@@ -4,9 +4,6 @@ import moduleForAcceptance from 'razer-cars-app/tests/helpers/module-for-accepta
 moduleForAcceptance('Acceptance | car types/form', {
   beforeEach() {
     login();
-    server.create('car-type', {history: [1, 2, 3, 4, 5]});
-    server.createList('car-type', 4);
-    server.createList('inventory-history', 5, {car: '1'});
   },
 });
 
@@ -41,8 +38,10 @@ test('A user can create a new Car Type', function(assert) {
   fillIn('.form-input__manufacturer', 'Pontiac');
   fillIn('.form-input__model-name', 'Aztec');
   fillIn('.form-input__total-inventory', 5);
+  click('.form-submit');
 
   andThen(function() {
+    assert.equal(currentRouteName(), 'car-types/index', 'Should redirect after submit');
     let items = findWithAssert('.car-type-list-item');
     let firstItem = items.first();
 
@@ -51,5 +50,44 @@ test('A user can create a new Car Type', function(assert) {
 
     assert.includes(firstItem.find('.car-type-list-item__year').text(), '2005');
     assert.includes(firstItem.find('.car-type-list-item__name').text(), 'Pontiac Aztec');
+  });
+});
+
+test('A user can see the edit Car Type form ', function(assert) {
+  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  visit('/cars/1/edit');
+
+  andThen(function() {
+    let yearInput = findWithAssert('.form-input__year');
+    let manufacturerInput = findWithAssert('.form-input__manufacturer');
+    let modelNameInput = findWithAssert('.form-input__model-name');
+    let totalInventoryInput = findWithAssert('.form-input__total-inventory');
+
+    assert.equal(yearInput.val(), '', 'The "year" input should be empty to start');
+    assert.equal(manufacturerInput.val(), '', 'The "manufacturer" input should be empty to start');
+    assert.equal(modelNameInput.val(), '', 'The "modelName" input should be empty to start');
+    assert.equal(totalInventoryInput.val(), '', 'The "totalInventory" input should be empty to start');
+  });
+});
+
+test('A user can edit an existing new Car Type', function(assert) {
+  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  visit('/cars/1/edit');
+  fillIn('.form-input__year', 2010);
+  fillIn('.form-input__manufacturer', 'Chrysler');
+  fillIn('.form-input__model-name', 'PT Cruiser');
+  fillIn('.form-input__total-inventory', 5);
+  click('.form-submit');
+
+  andThen(function() {
+    assert.equal(currentRouteName(), 'car-types/index', 'Should redirect after submit');
+    let items = findWithAssert('.car-type-list-item');
+    let firstItem = items.first();
+
+    assert.equal(items.length, 1, 'There should still only be one car listed');
+    assert.equal(server.db['car-types'].length, 1, 'There should still only be one car listed in the DB');
+
+    assert.includes(firstItem.find('.car-type-list-item__year').text(), '2010');
+    assert.includes(firstItem.find('.car-type-list-item__name').text(), 'Chrysler PT Cruiser');
   });
 });
