@@ -11,7 +11,7 @@ test('A user can visit the new Car Type form at /cars/new', function(assert) {
   visit('/cars/new');
 
   andThen(function() {
-    assert.equal(currentRouteName(), 'car-types/new');
+    assert.equal(currentRouteName(), 'cars.new');
     assert.equal(currentURL(), '/cars/new');
   });
 });
@@ -41,7 +41,7 @@ test('A user can create a new Car Type', function(assert) {
   click('.form-submit');
 
   andThen(function() {
-    assert.equal(currentRouteName(), 'car-types/index', 'Should redirect after submit');
+    assert.equal(currentRouteName(), 'cars.index', 'Should redirect after submit');
     let items = findWithAssert('.car-type-list-item');
     let firstItem = items.first();
 
@@ -80,7 +80,7 @@ test('A user can edit an existing new Car Type', function(assert) {
   click('.form-submit');
 
   andThen(function() {
-    assert.equal(currentRouteName(), 'car-types/index', 'Should redirect after submit');
+    assert.equal(currentRouteName(), 'cars.index', 'Should redirect after submit');
     let items = findWithAssert('.car-type-list-item');
     let firstItem = items.first();
 

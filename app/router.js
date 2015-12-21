@@ -12,6 +12,10 @@ Router.map(function() {
 
   this.route('car-type');
   this.route('login');
+  this.route('cars', function() {
+    this.route('new');
+    this.route('edit', {path: '/:car_id/edit'});
+  });
 });
 
 export default Router;
