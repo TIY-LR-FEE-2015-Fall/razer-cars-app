@@ -6,8 +6,10 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin, {
 
   actions: {
     loginUser(formValues) {
-      this.get('session').authenticate('authenticator:application', formValues.email, formValues.password)
-        .catch(() => {});
+      this.get('session').authenticate('authenticator:application', formValues.username, formValues.password)
+        .catch((reason) => {
+          console.log(reason);
+        });
     },
   },
 });
