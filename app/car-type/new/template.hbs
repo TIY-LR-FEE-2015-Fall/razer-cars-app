@@ -1,0 +1,8 @@
+{{#simple-form onsubmit="addCar" as |formValues|}}
+  {{input value=formValues.year name="year" class="form-input__year" placeholder="Username"}}
+  {{input value=formValues.manufacturer name="manufacturer" class="form-input__manufacturer" placeholder="Password"}}
+  {{input value=formValues.modelName name="modelName" class="form-input__model-name" placeholder="Password"}}
+  {{input value=formValues.totalInventory name="totalInventory" class="form-input__total-inventory" placeholder="Password"}}
+
+  <button class="form-submit">Submit</button>
+{{/simple-form}}
