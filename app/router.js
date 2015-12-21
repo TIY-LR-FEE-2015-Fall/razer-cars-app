@@ -2,11 +2,16 @@ import Ember from 'ember';
 import config from './config/environment';
 
 const Router = Ember.Router.extend({
-  location: config.locationType
+  location: config.locationType,
 });
 
 Router.map(function() {
-  this.route('inventory', { path: '/' }, function() {});
+  this.route('inventory', { path: '/' }, function() {
+
+  });
+
+  this.route('car-type');
+  this.route('login');
 });
 
 export default Router;
