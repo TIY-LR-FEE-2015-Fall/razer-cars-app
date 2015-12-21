@@ -1,14 +1,25 @@
-<h2>Inventory Store 2256</h2>
+<div class="mdl-grid">
+  <h2>Inventory Store 2256</h2>
+</div>
 
-<ul class="inventory-list">
-  {{#each model as |car|}}
-    <li class="inventory-list-item">
-      <span class="inventory-list-item__description">
-        {{car.year}} {{car.manufacturer}} {{car.modelName}}
-      </span>
-      <span class="inventory-list-item__available">
-        {{car.currentlyAvailable}} Available
-      </span>
-    </li>
-  {{/each}}
-</ul>
+<div class="mdl-grid">
+  <table class="inventory-list mdl-cell mdl-cell--12-col mdl-data-table mdl-shadow--2dp">
+    <tbody>
+      {{#each model as |car|}}
+        <tr class="inventory-list-item">
+          <td class="mdl-data-table__cell--non-numeric">
+            <span class="inventory-list-item__description">
+              {{car.year}} {{car.manufacturer}} {{car.modelName}}
+            </span> -
+            <span class="inventory-list-item__available">
+              {{car.currentlyAvailable}} Available
+            </span>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
