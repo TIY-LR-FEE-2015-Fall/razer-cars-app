@@ -1,3 +1,10 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#mdl-nav title="Razer Cars" scrollHeader=true}}
+  {{#with-session as |session|}}
+    {{!-- Example Nav Item --}}
+    {{mdl-nav-item name="Home" route="index"}}
+  {{/with-session}}
 
-{{outlet}}
+  <div class="mdl-grid">
+  	{{outlet}}
+  </div>
+{{/mdl-nav}}
