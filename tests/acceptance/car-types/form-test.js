@@ -54,7 +54,7 @@ test('A user can create a new Car Type', function(assert) {
 });
 
 test('A user can see the edit Car Type form ', function(assert) {
-  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
   visit('/cars/1/edit');
 
   andThen(function() {
@@ -63,15 +63,15 @@ test('A user can see the edit Car Type form ', function(assert) {
     let modelNameInput = findWithAssert('.form-input__model-name');
     let totalInventoryInput = findWithAssert('.form-input__total-inventory');
 
-    assert.equal(yearInput.val(), '', 'The "year" input should be empty to start');
-    assert.equal(manufacturerInput.val(), '', 'The "manufacturer" input should be empty to start');
-    assert.equal(modelNameInput.val(), '', 'The "modelName" input should be empty to start');
-    assert.equal(totalInventoryInput.val(), '', 'The "totalInventory" input should be empty to start');
+    assert.equal(yearInput.val(), '2012', 'The "year" input should have initialized values');
+    assert.equal(manufacturerInput.val(), 'Ford', 'The "manufacturer" input should have initialized values');
+    assert.equal(modelNameInput.val(), 'F150', 'The "modelName" input should have initialized values');
+    assert.equal(totalInventoryInput.val(), '10', 'The "totalInventory" input should have initialized values');
   });
 });
 
 test('A user can edit an existing new Car Type', function(assert) {
-  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
   visit('/cars/1/edit');
   fillIn('.form-input__year', 2010);
   fillIn('.form-input__manufacturer', 'Chrysler');
