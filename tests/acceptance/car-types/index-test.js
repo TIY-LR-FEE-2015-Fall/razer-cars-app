@@ -15,7 +15,7 @@ test('visiting /cars shows all car-types', function(assert) {
   visit('/cars');
 
   andThen(function() {
-    assert.equal(currentRouteName(), 'car-types/index');
+    assert.equal(currentRouteName(), 'car-type.index');
     assert.equal(currentURL(), '/cars');
   });
 });
