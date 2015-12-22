@@ -6,7 +6,7 @@ export default Ember.Route.extend({
       let car = this.store.createRecord('car-type', formValues);
 
       car.save().then(() => {
-        this.transitionTo('cars.index');
+        this.transitionTo('car-type.index');
       });
     },
   },
