@@ -18,7 +18,7 @@ test('A user should not see the car list on /cars/new', function(assert) {
 });
 
 test('A user should not see the car list on edit screen', function(assert) {
-  visit('/cars/1/edi');
+  visit('/cars/1/edit');
 
   andThen(function() {
     let items = find('.car-type-list-item');
