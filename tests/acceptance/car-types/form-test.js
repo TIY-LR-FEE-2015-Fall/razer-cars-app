@@ -20,10 +20,10 @@ test('A user can see the new Car Type form at /cars/new', function(assert) {
   visit('/cars/new');
 
   andThen(function() {
-    let yearInput = findWithAssert('.form-input__year');
-    let manufacturerInput = findWithAssert('.form-input__manufacturer');
-    let modelNameInput = findWithAssert('.form-input__model-name');
-    let totalInventoryInput = findWithAssert('.form-input__total-inventory');
+    let yearInput = findWithAssert('.form-input__year input');
+    let manufacturerInput = findWithAssert('.form-input__manufacturer input');
+    let modelNameInput = findWithAssert('.form-input__model-name input');
+    let totalInventoryInput = findWithAssert('.form-input__total-inventory input');
 
     assert.equal(yearInput.val(), '', 'The "year" input should be empty to start');
     assert.equal(manufacturerInput.val(), '', 'The "manufacturer" input should be empty to start');
@@ -34,10 +34,10 @@ test('A user can see the new Car Type form at /cars/new', function(assert) {
 
 test('A user can create a new Car Type', function(assert) {
   visit('/cars/new');
-  fillIn('.form-input__year', 2005);
-  fillIn('.form-input__manufacturer', 'Pontiac');
-  fillIn('.form-input__model-name', 'Aztec');
-  fillIn('.form-input__total-inventory', 5);
+  fillIn('.form-input__year input', 2005);
+  fillIn('.form-input__manufacturer input', 'Pontiac');
+  fillIn('.form-input__model-name input', 'Aztec');
+  fillIn('.form-input__total-inventory input', 5);
   click('.form-submit');
 
   andThen(function() {
@@ -58,10 +58,10 @@ test('A user can see the edit Car Type form ', function(assert) {
   visit('/cars/1/edit');
 
   andThen(function() {
-    let yearInput = findWithAssert('.form-input__year');
-    let manufacturerInput = findWithAssert('.form-input__manufacturer');
-    let modelNameInput = findWithAssert('.form-input__model-name');
-    let totalInventoryInput = findWithAssert('.form-input__total-inventory');
+    let yearInput = findWithAssert('.form-input__year input');
+    let manufacturerInput = findWithAssert('.form-input__manufacturer input');
+    let modelNameInput = findWithAssert('.form-input__model-name input');
+    let totalInventoryInput = findWithAssert('.form-input__total-inventory input');
 
     assert.equal(yearInput.val(), '2012', 'The "year" input should have initialized values');
     assert.equal(manufacturerInput.val(), 'Ford', 'The "manufacturer" input should have initialized values');
@@ -73,10 +73,10 @@ test('A user can see the edit Car Type form ', function(assert) {
 test('A user can edit an existing new Car Type', function(assert) {
   server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
   visit('/cars/1/edit');
-  fillIn('.form-input__year', 2010);
-  fillIn('.form-input__manufacturer', 'Chrysler');
-  fillIn('.form-input__model-name', 'PT Cruiser');
-  fillIn('.form-input__total-inventory', 5);
+  fillIn('.form-input__year input', 2010);
+  fillIn('.form-input__manufacturer input', 'Chrysler');
+  fillIn('.form-input__model-name input', 'PT Cruiser');
+  fillIn('.form-input__total-inventory input', 5);
   click('.form-submit');
 
   andThen(function() {
