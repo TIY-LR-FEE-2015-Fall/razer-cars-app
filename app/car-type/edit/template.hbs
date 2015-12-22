@@ -1,8 +1,8 @@
 {{#simple-form startingValues=model onsubmit="saveCar" as |formValues|}}
-  {{input value=formValues.year name="year" class="form-input__year" placeholder="Year"}}
-  {{input value=formValues.manufacturer name="manufacturer" class="form-input__manufacturer" placeholder="Manufacturer"}}
-  {{input value=formValues.modelName name="modelName" class="form-input__model-name" placeholder="Model Name"}}
-  {{input value=formValues.totalInventory name="totalInventory" class="form-input__total-inventory" placeholder="Total Inventory"}}
+  {{mdl-textfield value=formValues.year name="year" class="form-input__year" label="Year"}}
+  {{mdl-textfield value=formValues.manufacturer name="manufacturer" class="form-input__manufacturer" label="Manufacturer"}}
+  {{mdl-textfield value=formValues.modelName name="modelName" class="form-input__model-name" label="Model Name"}}
+  {{mdl-textfield value=formValues.totalInventory name="totalInventory" class="form-input__total-inventory" label="Total Inventory"}}
 
   <button class="form-submit">Submit</button>
 {{/simple-form}}
