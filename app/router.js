@@ -13,7 +13,7 @@ Router.map(function() {
   this.route('login');
   this.route('car-type', {path: '/cars'}, function() {
     this.route('new');
-    this.route('edit', {path: '/:car_id/edit'});
+    this.route('edit', {path: '/:car-type_id/edit'});
   });
 });
 
