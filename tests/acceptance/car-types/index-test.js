@@ -43,7 +43,7 @@ test('User can navigate to new car type form', function(assert) {
   });
 });
 
-test('User can navigate to new car type form', function(assert) {
+test('User can navigate to edit car type form', function(assert) {
   visit('/cars');
   click('.car-type-list-item__edit:first');
 
