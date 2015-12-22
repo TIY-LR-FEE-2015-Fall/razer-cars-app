@@ -1,0 +1,10 @@
+{{#link-to "car-type.new" class="new-btn"}}New Car{{/link-to}}
+<ul class="car-type-list">
+  {{#each model as |carType|}}
+  <li class="car-type-list-item">
+    <span class="car-type-list-item__year">{{ carType.year }}</span>
+    <span class="car-type-list-item__name">{{ carType.manufacturer }} {{ carType.modelName }}</span>
+  {{#link-to "car-type.edit" carType class="car-type-list-item__edit"}}Edit{{/link-to}}
+  </li>
+  {{/each}}
+</ul>
