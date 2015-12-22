@@ -17,6 +17,7 @@ function standardSetup() {
 
   // Four active rentals
   server.createList('inventory-history', 4, {car: '1', checkOut: new Date(CHECKIN_DATE)});
+
 }
 
 test('A user can visit inventory details', function(assert) {

@@ -8,6 +8,8 @@ export default function() {
   this.put('carTypes/:id', 'car-type');
   this.delete('carTypes/:id', 'car-type');
 
+  this.get('inventoryHistories/:id', ['inventory-histories']);
+
   this.post('/oauth/token', function(server, req) {
     var data = req.requestBody.split('&').reduce((carry, current) => {
       var [key, value] = current.split('=');
