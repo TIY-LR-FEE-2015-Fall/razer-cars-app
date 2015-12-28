@@ -1,7 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'razer-cars-app/tests/helpers/module-for-acceptance';
 import { currentSession } from 'razer-cars-app/tests/helpers/ember-simple-auth';
-import { get } from 'Ember';
+import { get } from 'ember';
 
 moduleForAcceptance('Acceptance | general/navigation');
 

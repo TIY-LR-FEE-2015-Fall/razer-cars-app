@@ -42,8 +42,6 @@ test('User can see a list of car types', function(assert) {
   page.visit();
 
   andThen(function() {
-    let items = findWithAssert('.car-type-list-item');
-
     assert.equal(page.carTypes().count(), 5, 'There should be five car types in the list');
 
     assert.includes(page.carTypes(1).year(), '2012');
