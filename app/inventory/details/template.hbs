@@ -5,7 +5,7 @@
   </li>
 </ul>
 
-<button class="quick-rent-btn" {{action 'quickRent'}}>Rent</button>
+<button class="quick-rent-btn" {{action 'quickRent'}} disabled={{ model.blockRents }}>Rent</button>
 
 <ul class="rentals">
   {{#each model.history as |rental|}}

@@ -9,6 +9,10 @@ export default DS.Model.extend({
 
   history: DS.hasMany('inventory-history'),
 
+  blockRents: Ember.computed('currentlyAvailable', function() {
+    return this.get('currentlyAvailable') === 0;
+  }),
+
   currentlyAvailable: Ember.computed('totalInventory', 'history.@each.checkIn', function() {
     let total = parseInt(this.get('totalInventory'));
     let outForRent = this.get('history').reduce(function(carry, curr) {
