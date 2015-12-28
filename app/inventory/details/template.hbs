@@ -4,3 +4,15 @@
     <span class="inventory-available-supply">{{ model.currentlyAvailable }}</span>
   </li>
 </ul>
+
+<button class="quick-rent-btn" {{action 'quickRent'}}>Rent</button>
+
+<ul class="rentals">
+  {{#each model.history as |rental|}}
+    {{#unless rental.checkIn}}
+      <li class="inventory-active-rental-item">
+        <span class="rental-out-date">{{rental.checkOut}}</span>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>

@@ -9,6 +9,8 @@ export default function() {
   this.delete('carTypes/:id', 'car-type');
 
   this.get('inventoryHistories/:id', ['inventory-histories']);
+  this.post('inventoryHistories', 'inventory-history');
+  this.put('inventoryHistories/:id', ['inventory-histories']);
 
   this.post('/oauth/token', function(server, req) {
     var data = req.requestBody.split('&').reduce((carry, current) => {
