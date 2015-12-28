@@ -39,6 +39,17 @@ test('visiting / shows the inventory list', function(assert) {
   });
 });
 
+test('user can navigate to detail page', function(assert) {
+  standardSetup();
+  visit('/');
+  click('.inventory-list-item__detail-link:first');
+
+  andThen(function() {
+    assert.equal(currentRouteName(), 'inventory.details');
+    assert.equal(currentURL(), '/1');
+  });
+});
+
 test('unavailable items are red', function(assert) {
   server.create('car-type', {year: 2012, totalInventory: 5, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
   server.createList('inventory-history', 5, {car: '1', checkOut: new Date()});

@@ -1,19 +1,40 @@
-<ul class="">
-  <li>
-    <span class="inventory-total-supply">{{ model.totalInventory }}</span>
-    <span class="inventory-available-supply">{{ model.currentlyAvailable }}</span>
-  </li>
-</ul>
+<div class="mdl-grid">
+  <h2>Rental History for {{model.year}} {{model.manufacturer}} {{model.modelName}}</h2>
+</div>
 
-<button class="quick-rent-btn" {{action 'quickRent'}} disabled={{ model.blockRents }}>Rent</button>
+<div class="mdl-grid">
+  <table class="inventory-list mdl-cell mdl-cell--12-col mdl-data-table mdl-shadow--2dp">
 
-<ul class="rentals">
-  {{#each model.history as |rental|}}
-    {{#unless rental.checkIn}}
-      <li class="inventory-active-rental-item">
-        <span class="rental-out-date">{{rental.checkOut}}</span>
-        <button class="quick-return" {{action 'quickReturn' rental}}>Return</button>
-      </li>
-    {{/unless}}
-  {{/each}}
-</ul>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Total Supply</td>
+      <td class="inventory-total-supply">{{ model.totalInventory }}</td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Available For Rent</td>
+      <td class="inventory-available-supply">{{ model.currentlyAvailable }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="mdl-grid arrange-right">
+  {{mdl-button class="quick-rent-btn" text="Rent" isRaised=true isAccent=true on-click=(route-action "quickRent")}}
+</div>
+
+<div class="mdl-grid">
+  <table class="inventory-list mdl-cell mdl-cell--12-col mdl-data-table mdl-shadow--2dp">
+    <tbody>
+      {{#each model.history as |rental|}}
+        {{#unless rental.checkIn}}
+          <tr class="inventory-active-rental-item">
+            <td class="mdl-data-table__cell--non-numeric">
+              <span class="rental-out-date">{{rental.checkOut}}</span>
+            </td>
+            <td class="return-right">
+              {{mdl-button class="quick-return" text="Return" isRaised=true on-click=(route-action "quickReturn" rental)}}
+            </td>
+          </tr>
+        {{/unless}}
+      {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -1,5 +1,9 @@
 @import 'material-design-lite';
 
+.arrange-right {
+  flex-direction: row-reverse;
+}
+
 .mdl-grid {
   max-width: 1040px;
 }
@@ -10,4 +14,21 @@
 
 .inventory-list-item__available--available {
   color: #079537;
+}
+
+.mdl-data-table td.return-right {
+  padding: 0 ;
+
+  button {
+    cursor: pointer;
+    padding: 0 1rem;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+  }
+}
+
+.quick-rent-btn {
+  margin: $radio-padding;
 }
