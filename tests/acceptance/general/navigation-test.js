@@ -1,7 +1,6 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'razer-cars-app/tests/helpers/module-for-acceptance';
 import { currentSession } from 'razer-cars-app/tests/helpers/ember-simple-auth';
-import { get } from 'ember';
 
 import navBar from 'razer-cars-app/tests/pages/navigation';
 
@@ -45,7 +44,6 @@ test('An authenticated user can navigate to the "Car Type List"', function(asser
 });
 
 test('An authenticated user can navigate to the "Inventory List"', function(assert) {
-  let app = this.application;
   login();
   visit('/');
   navBar.navigate().click('Inventory');
