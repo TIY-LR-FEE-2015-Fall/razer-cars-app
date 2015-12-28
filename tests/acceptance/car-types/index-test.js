@@ -1,5 +1,23 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'razer-cars-app/tests/helpers/module-for-acceptance';
+import PageObject from '../../page-object';
+const { visitable, text, collection, clickable } = PageObject;
+
+const page = PageObject.create({
+  visit: visitable('/cars'),
+  newCar: clickable('.new-btn'),
+
+  carTypes: collection({
+    itemScope: '.car-type-list-item',
+
+    item: {
+      year: text('.car-type-list-item__year'),
+      name: text('.car-type-list-item__name'),
+
+      edit: clickable('.car-type-list-item__edit'),
+    },
+  }),
+});
 
 moduleForAcceptance('Acceptance | car types/index', {
   beforeEach() {
@@ -12,7 +30,7 @@ moduleForAcceptance('Acceptance | car types/index', {
 
 // You will need to configure the `path` option for this route
 test('visiting /cars shows all car-types', function(assert) {
-  visit('/cars');
+  page.visit();
 
   andThen(function() {
     assert.equal(currentRouteName(), 'car-type.index');
@@ -21,22 +39,21 @@ test('visiting /cars shows all car-types', function(assert) {
 });
 
 test('User can see a list of car types', function(assert) {
-  visit('/cars');
+  page.visit();
 
   andThen(function() {
     let items = findWithAssert('.car-type-list-item');
-    let firstItem = items.first();
 
-    assert.equal(items.length, 5, 'There should be five car types in the list');
+    assert.equal(page.carTypes().count(), 5, 'There should be five car types in the list');
 
-    assert.includes(firstItem.find('.car-type-list-item__year').text(), '2012');
-    assert.includes(firstItem.find('.car-type-list-item__name').text(), 'Ford F150');
+    assert.includes(page.carTypes(1).year(), '2012');
+    assert.includes(page.carTypes(1).name(), 'Ford F150');
   });
 });
 
 test('User can navigate to new car type form', function(assert) {
-  visit('/cars');
-  click('.new-btn');
+  page.visit()
+    .newCar();
 
   andThen(function() {
     assert.equal(currentURL(), '/cars/new');
@@ -44,8 +61,8 @@ test('User can navigate to new car type form', function(assert) {
 });
 
 test('User can navigate to edit car type form', function(assert) {
-  visit('/cars');
-  click('.car-type-list-item__edit:first');
+  page.visit()
+    .carTypes(1).edit();
 
   andThen(function() {
     assert.equal(currentURL(), '/cars/1/edit');
