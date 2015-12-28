@@ -12,6 +12,7 @@
     {{#unless rental.checkIn}}
       <li class="inventory-active-rental-item">
         <span class="rental-out-date">{{rental.checkOut}}</span>
+        <button class="quick-return" {{action 'quickReturn' rental}}>Return</button>
       </li>
     {{/unless}}
   {{/each}}

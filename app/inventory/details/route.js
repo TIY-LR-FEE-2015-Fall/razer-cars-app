@@ -6,9 +6,20 @@ export default Ember.Route.extend({
       // Find which car we are talking about
       let car = this.modelFor(this.routeName);
 
-      // Create a new inventory-history & set the checkOut & car
-      let history = this.store.createRecord('inventory-history', {car, checkOut: new Date()});
-      history.save();
+      if (car.get('currentlyAvailable')) {
+        // Create a new inventory-history & set the checkOut & car
+        let history = this.store.createRecord('inventory-history', {car, checkOut: new Date()});
+        history.save();
+      } else {
+        // Tell the user there's nothing to rent
+      }
+    },
+
+    quickReturn(rental) {
+      // How do we return a inventory-history
+      rental.setProperties({checkIn: new Date()});
+
+      rental.save();
     },
   },
 });

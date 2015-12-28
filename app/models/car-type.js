@@ -13,7 +13,7 @@ export default DS.Model.extend({
     return this.get('currentlyAvailable') === 0;
   }),
 
-  currentlyAvailable: Ember.computed('totalInventory', 'history.@each.checkIn', function() {
+  currentlyAvailable: Ember.computed('totalInventory', 'history.@each.checkIn', 'history.@each.checkOut', function() {
     let total = parseInt(this.get('totalInventory'));
     let outForRent = this.get('history').reduce(function(carry, curr) {
       if (curr.get('checkIn') === undefined) {
