@@ -16,7 +16,7 @@ export default DS.Model.extend({
   currentlyAvailable: Ember.computed('totalInventory', 'history.@each.checkIn', 'history.@each.checkOut', function() {
     let total = parseInt(this.get('totalInventory'));
     let outForRent = this.get('history').reduce(function(carry, curr) {
-      if (curr.get('checkIn') === undefined) {
+      if (!curr.get('checkIn')) {
         return carry + 1;
       }
 
