@@ -72,7 +72,7 @@ test('A user can quick rent a car', function(assert) {
     assert.equal(availableSupply.text(), 5, 'There should be one less car in the fleet');
     assert.ok(lastRental.find('.rental-out-date').text().indexOf('Dec 22 2015 13:45:11') === -1,
       'The standard date should not be default');
-    assert.equal(server.db['inventory-histories'].length, 6, 'The history should save to the API');
+    assert.equal(server.db['inventoryHistories'].length, 6, 'The history should save to the API');
   });
 });
 

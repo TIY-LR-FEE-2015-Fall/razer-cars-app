@@ -46,7 +46,7 @@ test('A user can create a new Car Type', function(assert) {
     let firstItem = items.first();
 
     assert.equal(items.length, 1, 'The new car should be in the list');
-    assert.equal(server.db['car-types'].length, 1, 'The new car should be saved to the database');
+    assert.equal(server.db['carTypes'].length, 1, 'The new car should be saved to the database');
 
     assert.includes(firstItem.find('.car-type-list-item__year').text(), '2005');
     assert.includes(firstItem.find('.car-type-list-item__name').text(), 'Pontiac Aztec');
@@ -85,7 +85,7 @@ test('A user can edit an existing new Car Type', function(assert) {
     let firstItem = items.first();
 
     assert.equal(items.length, 1, 'There should still only be one car listed');
-    assert.equal(server.db['car-types'].length, 1, 'There should still only be one car listed in the DB');
+    assert.equal(server.db['carTypes'].length, 1, 'There should still only be one car listed in the DB');
 
     assert.includes(firstItem.find('.car-type-list-item__year').text(), '2010');
     assert.includes(firstItem.find('.car-type-list-item__name').text(), 'Chrysler PT Cruiser');
