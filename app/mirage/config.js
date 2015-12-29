@@ -4,7 +4,7 @@ export default function() {
   this.get('/carTypes', ['carTypes', 'inventoryHistories']);
   this.post('/carTypes');
 
-  this.get('carTypes/:id', ['carType', 'inventoryHistories']);
+  this.get('carTypes/:id');
   this.put('carTypes/:id');
   this.delete('carTypes/:id');
 
