@@ -17,6 +17,7 @@ export default DS.Model.extend({
     let total = parseInt(this.get('totalInventory'));
     let outForRent = this.get('history').reduce(function(carry, curr) {
       if (!curr.get('checkIn')) {
+        console.log(curr.get('id'), curr.get('checkIn'));
         return carry + 1;
       }
 

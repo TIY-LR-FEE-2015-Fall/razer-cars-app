@@ -31,3 +31,29 @@ test('it calculates currentlyAvailable', function(assert) {
     assert.equal(model.get('currentlyAvailable'), 10);
   });
 });
+
+test('it calculates currentlyAvailable after alot of movement', function(assert) {
+  let model = this.subject({totalInventory: 10});
+  let store = this.store();
+
+  Ember.run(function() {
+    assert.equal(model.get('currentlyAvailable'), 10);
+
+    // This fakes a new inventory item that is checked out
+    let historyOne = store.createRecord('inventory-history', {car: model, checkOut: new Date()});
+
+    assert.equal(model.get('currentlyAvailable'), 9);
+
+    // This fakes that the history above was checked back in
+    historyOne.set('checkIn', new Date());
+
+    assert.equal(model.get('currentlyAvailable'), 10);
+
+    let historyTwo = store.createRecord('inventory-history', {car: model, checkOut: new Date()});
+    assert.equal(model.get('currentlyAvailable'), 9);
+
+    historyTwo.set('checkIn', null);
+    historyOne.set('checkIn', null);
+    assert.equal(model.get('currentlyAvailable'), 8);
+  });
+});
