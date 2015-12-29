@@ -32,3 +32,20 @@
 .quick-rent-btn {
   margin: $radio-padding;
 }
+
+.info-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 64px;
+  width: 100%;
+  background: #B3D4FC;
+
+  td {
+    text-align: center;
+  }
+}
+
+.mdl-layout__content {
+  margin-bottom: 64px;
+}
