@@ -8,10 +8,10 @@ moduleForAcceptance('Acceptance | inventory/list', {
 });
 
 function standardSetup() {
-  server.create('car-type', {year: 2012, totalInventory: 10, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
-  server.createList('car-type', 4);
-  server.createList('inventory-history', 1, {car: '1', checkOut: new Date(), checkIn: new Date()});
-  server.createList('inventory-history', 4, {car: '1', checkOut: new Date()});
+  server.create('carType', {year: 2012, totalInventory: 10, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.createList('carType', 4);
+  server.createList('inventoryHistory', 1, {car: '1', checkOut: new Date(), checkIn: new Date()});
+  server.createList('inventoryHistory', 4, {car: '1', checkOut: new Date()});
 }
 
 test('visiting / shows the inventory screen', function(assert) {
@@ -51,8 +51,8 @@ test('user can navigate to detail page', function(assert) {
 });
 
 test('unavailable items are red', function(assert) {
-  server.create('car-type', {year: 2012, totalInventory: 5, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
-  server.createList('inventory-history', 5, {car: '1', checkOut: new Date()});
+  server.create('carType', {year: 2012, totalInventory: 5, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.createList('inventoryHistory', 5, {car: '1', checkOut: new Date()});
   visit('/');
 
   andThen(function() {
@@ -66,9 +66,9 @@ test('unavailable items are red', function(assert) {
 });
 
 test('unavailable cars are green', function(assert) {
-  server.create('car-type', {year: 2012, totalInventory: 5, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
-  server.createList('inventory-history', 1, {car: '1'});
-  server.createList('inventory-history', 4, {car: '1', checkIn: new Date()});
+  server.create('carType', {year: 2012, totalInventory: 5, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.createList('inventoryHistory', 1, {car: '1'});
+  server.createList('inventoryHistory', 4, {car: '1', checkIn: new Date()});
   visit('/');
 
   andThen(function() {

@@ -10,13 +10,13 @@ moduleForAcceptance('Acceptance | inventory/details', {
 });
 
 function standardSetup() {
-  server.create('car-type', {year: 2012, totalInventory: 10, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.create('carType', {year: 2012, totalInventory: 10, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
 
   // One rental that has been returned
-  server.createList('inventory-history', 1, {car: '1', checkOut: new Date(CHECKIN_DATE), checkIn: new Date(CHECKIN_DATE)});
+  server.createList('inventoryHistory', 1, {car: '1', checkOut: new Date(CHECKIN_DATE), checkIn: new Date(CHECKIN_DATE)});
 
   // Four active rentals
-  server.createList('inventory-history', 4, {car: '1', checkOut: new Date(CHECKIN_DATE)});
+  server.createList('inventoryHistory', 4, {car: '1', checkOut: new Date(CHECKIN_DATE)});
 
 }
 
@@ -77,13 +77,13 @@ test('A user can quick rent a car', function(assert) {
 });
 
 test('A user cannot click on "Quick Rent" if there are no available cars in the current fleet', function(assert) {
-  server.create('car-type', {year: 2012, totalInventory: 4, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
+  server.create('carType', {year: 2012, totalInventory: 4, manufacturer: 'Ford', modelName: 'F150', history: [1, 2, 3, 4, 5]});
 
   // One rental that has been returned
-  server.createList('inventory-history', 1, {car: '1', checkOut: new Date(CHECKIN_DATE), checkIn: new Date(CHECKIN_DATE)});
+  server.createList('inventoryHistory', 1, {car: '1', checkOut: new Date(CHECKIN_DATE), checkIn: new Date(CHECKIN_DATE)});
 
   // Four active rentals
-  server.createList('inventory-history', 4, {car: '1', checkOut: new Date(CHECKIN_DATE)});
+  server.createList('inventoryHistory', 4, {car: '1', checkOut: new Date(CHECKIN_DATE)});
   visit('/1');
   click('.quick-rent-btn');
 

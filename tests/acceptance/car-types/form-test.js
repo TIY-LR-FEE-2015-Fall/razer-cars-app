@@ -54,7 +54,7 @@ test('A user can create a new Car Type', function(assert) {
 });
 
 test('A user can see the edit Car Type form ', function(assert) {
-  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
+  server.create('carType', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
   visit('/cars/1/edit');
 
   andThen(function() {
@@ -71,7 +71,7 @@ test('A user can see the edit Car Type form ', function(assert) {
 });
 
 test('A user can edit an existing new Car Type', function(assert) {
-  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
+  server.create('carType', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
   visit('/cars/1/edit');
   fillIn('.form-input__year input', 2010);
   fillIn('.form-input__manufacturer input', 'Chrysler');

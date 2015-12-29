@@ -18,7 +18,7 @@ test('A user should not see the car list on /cars/new', function(assert) {
 });
 
 test('A user should not see the car list on edit screen', function(assert) {
-  server.create('car-type', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
+  server.create('carType', {year: 2012, manufacturer: 'Ford', modelName: 'F150', totalInventory: 10, history: [1, 2, 3, 4, 5]});
 
   visit('/cars/1/edit');
 
